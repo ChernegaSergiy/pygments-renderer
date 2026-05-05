@@ -1,5 +1,5 @@
 from PIL import Image, ImageDraw
-from src.colors import BG, FG, TERM_BG, TERM_FG, PROMPT_USR, PROMPT_DIR, CMD_COLOR, OUT_COLOR, INPUT_COLOR, RESULT_COLOR
+import src.colors
 from src.fonts import load_font, measure, FONT_SIZE, PAD, LINE_H
 
 def titlebar(draw, width, title, font):
@@ -13,7 +13,7 @@ def render_code(lines_with_colors, title, output_path, width=880):
     font = load_font()
     title_font = load_font(13)
     height = PAD*2 + 30 + len(lines_with_colors)*LINE_H + PAD
-    img = Image.new("RGB", (width, height), BG)
+    img = Image.new("RGB", (width, height), src.colors.BG)
     draw = ImageDraw.Draw(img)
     titlebar(draw, width, title, title_font)
     y = 28 + PAD
@@ -33,7 +33,7 @@ def render_terminal(lines, title, output_path, width=740):
     font = load_font()
     title_font = load_font(13)
     height = PAD*2 + 30 + len(lines)*LINE_H + PAD
-    img = Image.new("RGB", (width, height), TERM_BG)
+    img = Image.new("RGB", (width, height), src.colors.TERM_BG)
     draw = ImageDraw.Draw(img)
     titlebar(draw, width, title, title_font)
     y = 28 + PAD

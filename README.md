@@ -2,7 +2,7 @@
 
 [![License: CSSM Unlimited License v2.0](https://img.shields.io/badge/License-CSSM%20Unlimited%20License%20v2.0-blue.svg?logo=opensourceinitiative)](LICENSE)
 
-A CLI tool that generates syntax-highlighted code screenshots as PNG images.
+A CLI tool that generates syntax-highlighted code screenshots as PNG images. Designed for developers, educators, and content creators who need beautiful code screenshots for presentations, documentation, or social media.
 
 ## Features
 

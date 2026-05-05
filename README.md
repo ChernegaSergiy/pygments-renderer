@@ -56,7 +56,7 @@ pip install Pillow Pygments
 
 ```
 usage: pygments-renderer [-h] [-o OUTPUT] [-l LANGUAGE] [-t THEME] [-w WIDTH]
-                         [-T TITLE]
+                         [-s START] [-T TITLE]
                          input
 
 Generate syntax-highlighted code screenshots
@@ -74,6 +74,8 @@ options:
                         Color theme (default, monokai, dracula, etc.)
   -w WIDTH, --width WIDTH
                         Image width (default: 880)
+  -s START, --start START
+                        Starting line number (default: 1)
   -T TITLE, --title TITLE
                         Window title
 ```
@@ -98,6 +100,11 @@ pygments-renderer main.rs -w 1200 -T "Rust Source" -o output.png
 **Use with HTML + PHP:**
 ```bash
 pygments-renderer template.php -l html+php -t solarized-dark -o screenshot.png
+```
+
+**Custom starting line number:**
+```bash
+pygments-renderer input.cpp -s 10 -o code.png
 ```
 
 ## Available Themes

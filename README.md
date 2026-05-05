@@ -55,7 +55,11 @@ pip install Pillow Pygments
 ## Usage
 
 ```
-usage: pygments-renderer [-h] [-o OUTPUT] [-l LANGUAGE] [-t THEME] [-w WIDTH] [-T TITLE] input
+usage: pygments-renderer [-h] [-o OUTPUT] [-l LANGUAGE] [-t THEME] [-w WIDTH]
+                         [-T TITLE]
+                         input
+
+Generate syntax-highlighted code screenshots
 
 positional arguments:
   input                 Input file path
@@ -67,7 +71,7 @@ options:
   -l LANGUAGE, --language LANGUAGE
                         Language (e.g., cpp, python, html, html+php)
   -t THEME, --theme THEME
-                        Color theme (default, monokai, dracula, nord, gruvbox-dark, etc.)
+                        Color theme (default, monokai, dracula, etc.)
   -w WIDTH, --width WIDTH
                         Image width (default: 880)
   -T TITLE, --title TITLE

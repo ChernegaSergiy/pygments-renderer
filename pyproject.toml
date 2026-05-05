@@ -1,0 +1,27 @@
+[project]
+name = "pygments-renderer"
+version = "1.0.0"
+description = "Generate syntax-highlighted code screenshots"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "ChernegaSergiy" }
+]
+keywords = ["pygments", "syntax-highlighting", "screenshot", "code"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+]
+
+dependencies = [
+    "Pillow>=10.0.0",
+    "Pygments>=2.17.0",
+]
+
+[project.scripts]
+pygments-renderer = "scripts.generate:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

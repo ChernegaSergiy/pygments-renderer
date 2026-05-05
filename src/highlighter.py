@@ -1,5 +1,5 @@
 from pygments import lex
-from pygments.lexers import CppLexer
+from pygments.lexers import CppLexer, guess_lexer
 from pygments.styles import get_style_by_name
 from src.colors import FG
 
@@ -56,7 +56,7 @@ def get_token_color(token_type):
 
 def tokenize_code(code_str, lexer=None):
     if lexer is None:
-        lexer = CppLexer()
+        lexer = guess_lexer(code_str)
     lines = code_str.split('\n')
     result = []
     for i, line in enumerate(lines, 1):

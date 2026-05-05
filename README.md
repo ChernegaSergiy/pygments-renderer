@@ -85,6 +85,8 @@ options:
 
 ## Examples
 
+![Preview](examples/preview.png)
+
 **Basic usage (auto-detect language):**
 ```bash
 pygments-renderer examples/task1.cpp -o code.png

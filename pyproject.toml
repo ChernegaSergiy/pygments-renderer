@@ -4,7 +4,7 @@ version = "1.0.0"
 description = "Generate syntax-highlighted code screenshots"
 readme = "README.md"
 requires-python = ">=3.8"
-license = "See LICENSE file"
+license = { file = "LICENSE" }
 authors = [
     { name = "ChernegaSergiy" }
 ]

@@ -4,14 +4,14 @@ version = "1.0.0"
 description = "Generate syntax-highlighted code screenshots"
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "MIT" }
+license = { text = "LicenseRef-CSSM-Unlimited-2.0" }
 authors = [
     { name = "ChernegaSergiy" }
 ]
 keywords = ["pygments", "syntax-highlighting", "screenshot", "code"]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
+    "License :: Other :: CSSM Unlimited License v2.0",
 ]
 
 dependencies = [

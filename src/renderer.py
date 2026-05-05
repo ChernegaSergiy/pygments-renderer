@@ -9,9 +9,9 @@ def titlebar(draw, width, title, font):
         cx = width - 20 - i*18
         draw.ellipse([(cx-5,8),(cx+5,18)], fill=col)
 
-def render_code(lines_with_colors, title, output_path, width=880, start_line=1):
-    font = load_font()
-    title_font = load_font(13)
+def render_code(lines_with_colors, title, output_path, width=880, start_line=1, font_name=None):
+    font = load_font(font=font_name)
+    title_font = load_font(13, font=font_name)
     height = PAD*2 + 30 + len(lines_with_colors)*LINE_H + PAD
     img = Image.new("RGB", (width, height), src.colors.BG)
     draw = ImageDraw.Draw(img)

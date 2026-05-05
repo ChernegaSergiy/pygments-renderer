@@ -4,15 +4,11 @@ version = "1.0.0"
 description = "Generate syntax-highlighted code screenshots"
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "LicenseRef-CSSM-Unlimited-2.0" }
+license = { text = "See LICENSE file" }
 authors = [
     { name = "ChernegaSergiy" }
 ]
 keywords = ["pygments", "syntax-highlighting", "screenshot", "code"]
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: Other :: CSSM Unlimited License v2.0",
-]
 
 dependencies = [
     "Pillow>=10.0.0",
@@ -20,7 +16,7 @@ dependencies = [
 ]
 
 [project.scripts]
-pygments-renderer = "scripts.generate:main"
+pygments-renderer = "src.scripts.generate:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]

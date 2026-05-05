@@ -13,6 +13,7 @@ def main():
     parser.add_argument("-l", "--language", help="Language (e.g., cpp, python, html, html+php)")
     parser.add_argument("-t", "--theme", default="default", help="Color theme (default, monokai, dracula, etc.)")
     parser.add_argument("-w", "--width", type=int, default=880, help="Image width (default: 880)")
+    parser.add_argument("-s", "--start", type=int, default=1, help="Starting line number (default: 1)")
     parser.add_argument("-T", "--title", help="Window title")
     args = parser.parse_args()
 
@@ -29,7 +30,7 @@ def main():
     lines = tokenize_code(code, lexer)
 
     title = args.title or Path(args.input).name
-    render_code(lines, title, args.output, args.width)
+    render_code(lines, title, args.output, args.width, args.start)
 
     print(f"Generated: {args.output}")
 

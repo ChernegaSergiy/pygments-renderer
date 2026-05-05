@@ -9,7 +9,7 @@ def titlebar(draw, width, title, font):
         cx = width - 20 - i*18
         draw.ellipse([(cx-5,8),(cx+5,18)], fill=col)
 
-def render_code(lines_with_colors, title, output_path, width=880):
+def render_code(lines_with_colors, title, output_path, width=880, start_line=1):
     font = load_font()
     title_font = load_font(13)
     height = PAD*2 + 30 + len(lines_with_colors)*LINE_H + PAD
@@ -17,15 +17,17 @@ def render_code(lines_with_colors, title, output_path, width=880):
     draw = ImageDraw.Draw(img)
     titlebar(draw, width, title, title_font)
     y = 28 + PAD
+    current_line = start_line
     for linenum, parts in lines_with_colors:
         x = PAD
-        num_str = f"{linenum:3d}  "
+        num_str = f"{current_line:3d}  "
         draw.text((x, y), num_str, font=font, fill=(80,80,80))
         x += measure(num_str, font)
         for text, color in parts:
             draw.text((x, y), text, font=font, fill=color)
             x += measure(text, font)
         y += LINE_H
+        current_line += 1
     img.save(output_path)
     print(f"Saved: {output_path}")
 

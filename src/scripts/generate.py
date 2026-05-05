@@ -1,7 +1,7 @@
 import argparse
 from pathlib import Path
 
-from pygments.lexers import get_lexer_by_name
+from pygments.lexers import get_lexer_by_name, get_lexer_for_filename
 
 from src import tokenize_code, load_theme, render_code, render_terminal
 
@@ -24,6 +24,13 @@ def main():
     lexer = None
     if args.language:
         lexer = get_lexer_by_name(args.language)
+    else:
+        try:
+            lexer = get_lexer_for_filename(args.input)
+        except:
+            print(f"Error: Could not detect language for '{args.input}'")
+            print("Please specify language with -l option")
+            return
 
     with open(args.input, 'r', encoding='utf-8') as f:
         code = f.read()

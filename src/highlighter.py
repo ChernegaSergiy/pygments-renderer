@@ -56,21 +56,46 @@ def get_token_color(token_type):
     for prefix, color in _token_colors.items():
         if token_str.startswith(prefix):
             return color
+    parts = token_str.split(".")
+    for i in range(len(parts)-1, 0, -1):
+        prefix = ".".join(parts[:i])
+        if prefix in _token_colors:
+            return _token_colors[prefix]
     return FG
 
 def tokenize_code(code_str, lexer=None):
     if lexer is None:
-        lexer = guess_lexer(code_str)
+        return []
+    tokens = list(lex(code_str, lexer))
     lines = code_str.split('\n')
     result = []
-    for i, line in enumerate(lines, 1):
-        tokens = list(lex(line, lexer))
+    token_idx = 0
+    
+    for line_idx, line in enumerate(lines, 1):
         parts = []
-        for token_type, token_text in tokens:
-            if token_text:
-                color = get_token_color(token_type)
-                parts.append((token_text, color))
+        line_len = len(line)
+        pos = 0
+        
+        while token_idx < len(tokens):
+            token_type, token_text = tokens[token_idx]
+            
+            if '\n' in token_text:
+                parts_text = token_text.replace('\n', '')
+                if parts_text:
+                    parts.append((parts_text, get_token_color(token_type)))
+                token_idx += 1
+                break
+            
+            if pos >= line_len:
+                break
+                
+            color = get_token_color(token_type)
+            parts.append((token_text, color))
+            pos += len(token_text)
+            token_idx += 1
+            
         if not parts:
             parts = [('', FG)]
-        result.append((i, parts))
+        result.append((line_idx, parts))
+        
     return result

@@ -1,8 +1,10 @@
 import sys
 import os
+import argparse
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from pathlib import Path
+from pygments.lexers import get_lexer_by_name
 from src import tokenize_code, render_code, render_terminal
 from src.colors import PROMPT_USR, PROMPT_DIR, FG, CMD_COLOR, OUT_COLOR, INPUT_COLOR, RESULT_COLOR
 
@@ -11,15 +13,23 @@ def read_file(path):
         return f.read()
 
 def main():
+    parser = argparse.ArgumentParser(description="Generate syntax-highlighted code screenshots")
+    parser.add_argument("-l", "--language", help="Language (e.g., cpp, python, html, html+php)")
+    args = parser.parse_args()
+
+    lexer = None
+    if args.language:
+        lexer = get_lexer_by_name(args.language)
+
     examples_dir = Path(__file__).parent.parent / "examples"
 
     task1_code = read_file(examples_dir / "task1.cpp")
     task2_code = read_file(examples_dir / "task2.cpp")
     task3_code = read_file(examples_dir / "task3.cpp")
 
-    task1_lines = tokenize_code(task1_code)
-    task2_lines = tokenize_code(task2_code)
-    task3_lines = tokenize_code(task3_code)
+    task1_lines = tokenize_code(task1_code, lexer)
+    task2_lines = tokenize_code(task2_code, lexer)
+    task3_lines = tokenize_code(task3_code, lexer)
 
     render_code(task1_lines, "task1.cpp — Array1D: переміщення екстремумів", "code1.png", width=860)
     render_code(task2_lines, "task2.cpp — Array2D: суми негативних трикутників", "code2.png", width=900)

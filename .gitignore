@@ -5,3 +5,6 @@ venv/
 .venv/
 *.png
 *.jpg
+dist/
+build/
+src/*.egg-info/

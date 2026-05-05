@@ -1,10 +1,8 @@
-import sys
-import os
 import argparse
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from pathlib import Path
+
 from pygments.lexers import get_lexer_by_name
+
 from src import tokenize_code, load_theme, render_code, render_terminal
 
 

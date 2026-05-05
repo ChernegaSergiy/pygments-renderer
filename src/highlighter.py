@@ -1,8 +1,9 @@
 from pygments import lex
 from pygments.lexers import CppLexer
+from pygments.styles import get_style_by_name
 from src.colors import FG
 
-TOKEN_COLORS = {
+DEFAULT_TOKEN_COLORS = {
     "Keyword": (86, 156, 214),
     "Keyword.Constant": (86, 156, 214),
     "Keyword.Declaration": (86, 156, 214),
@@ -24,11 +25,31 @@ TOKEN_COLORS = {
     "Generic": FG,
 }
 
+_token_colors = DEFAULT_TOKEN_COLORS
+
+def load_theme(theme_name):
+    global _token_colors
+    if theme_name == "default":
+        _token_colors = DEFAULT_TOKEN_COLORS
+        return
+    style = get_style_by_name(theme_name)
+    colors = {}
+    for token_type, style_def in style:
+        color = style_def.get("color")
+        if color:
+            hex_color = color.lstrip("#")
+            rgb = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+            token_str = str(token_type)
+            if token_str.startswith("Token."):
+                token_str = token_str[6:]
+            colors[token_str] = rgb
+    _token_colors = colors
+
 def get_token_color(token_type):
     token_str = str(token_type)
     if token_str.startswith("Token."):
         token_str = token_str[6:]
-    for prefix, color in TOKEN_COLORS.items():
+    for prefix, color in _token_colors.items():
         if token_str.startswith(prefix):
             return color
     return FG

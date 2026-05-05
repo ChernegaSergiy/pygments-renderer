@@ -56,7 +56,7 @@ pip install Pillow Pygments
 
 ```
 usage: pygments-renderer [-h] [-o OUTPUT] [-l LANGUAGE] [-t THEME] [-w WIDTH]
-                         [-s START] [-T TITLE]
+                         [-s START] [-f FONT] [-T TITLE]
                          input
 
 Generate syntax-highlighted code screenshots
@@ -76,6 +76,7 @@ options:
                         Image width (default: 880)
   -s START, --start START
                         Starting line number (default: 1)
+  -f FONT, --font FONT  Font file path or system font name
   -T TITLE, --title TITLE
                         Window title
 ```
@@ -105,6 +106,12 @@ pygments-renderer template.php -l html+php -t solarized-dark -o screenshot.png
 **Custom starting line number:**
 ```bash
 pygments-renderer input.cpp -s 10 -o code.png
+```
+
+**Custom font:**
+```bash
+pygments-renderer input.cpp -f "Consolas" -o code.png
+pygments-renderer input.cpp -f /path/to/font.ttf -o code.png
 ```
 
 ## Available Themes

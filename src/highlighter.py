@@ -1,6 +1,7 @@
 from pygments import lex
 from pygments.lexers import CppLexer, guess_lexer
 from pygments.styles import get_style_by_name
+from src import colors
 from src.colors import FG
 
 DEFAULT_TOKEN_COLORS = {
@@ -33,7 +34,7 @@ def load_theme(theme_name):
         _token_colors = DEFAULT_TOKEN_COLORS
         return
     style = get_style_by_name(theme_name)
-    colors = {}
+    token_colors = {}
     for token_type, style_def in style:
         color = style_def.get("color")
         if color:
@@ -42,8 +43,11 @@ def load_theme(theme_name):
             token_str = str(token_type)
             if token_str.startswith("Token."):
                 token_str = token_str[6:]
-            colors[token_str] = rgb
-    _token_colors = colors
+            token_colors[token_str] = rgb
+    _token_colors = token_colors
+    if style.background_color:
+        hex_bg = style.background_color.lstrip("#")
+        colors.BG = tuple(int(hex_bg[i:i+2], 16) for i in (0, 2, 4))
 
 def get_token_color(token_type):
     token_str = str(token_type)

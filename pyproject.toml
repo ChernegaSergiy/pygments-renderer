@@ -21,5 +21,5 @@ pygments-renderer = "src.scripts.generate:main"
 [tool.setuptools]
 
 [build-system]
-requires = ["setuptools==69.5.1"]
+requires = ["setuptools==82.0.1"]
 build-backend = "setuptools.build_meta"

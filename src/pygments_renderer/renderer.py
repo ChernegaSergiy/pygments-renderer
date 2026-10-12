@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw
-import src.colors
-from src.fonts import load_font, measure, FONT_SIZE, PAD, LINE_H
+from . import colors
+from .fonts import load_font, measure, FONT_SIZE, PAD, LINE_H
 
 def titlebar(draw, width, title, font):
     draw.rectangle([(0,0),(width,28)], fill=(37,37,38))
@@ -13,7 +13,7 @@ def render_code(lines_with_colors, title, output_path, width=880, start_line=1, 
     font = load_font(font=font_name)
     title_font = load_font(13, font=font_name)
     height = PAD*2 + 30 + len(lines_with_colors)*LINE_H + PAD
-    img = Image.new("RGB", (width, height), src.colors.BG)
+    img = Image.new("RGB", (width, height), colors.BG)
     draw = ImageDraw.Draw(img)
     titlebar(draw, width, title, title_font)
     y = 28 + PAD
@@ -35,7 +35,7 @@ def render_terminal(lines, title, output_path, width=740):
     font = load_font()
     title_font = load_font(13)
     height = PAD*2 + 30 + len(lines)*LINE_H + PAD
-    img = Image.new("RGB", (width, height), src.colors.TERM_BG)
+    img = Image.new("RGB", (width, height), colors.TERM_BG)
     draw = ImageDraw.Draw(img)
     titlebar(draw, width, title, title_font)
     y = 28 + PAD

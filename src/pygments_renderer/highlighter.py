@@ -1,8 +1,8 @@
 from pygments import lex
 from pygments.lexers import CppLexer, guess_lexer
 from pygments.styles import get_style_by_name
-from src import colors
-from src.colors import FG
+from . import colors
+from .colors import FG
 
 DEFAULT_TOKEN_COLORS = {
     "Keyword": (86, 156, 214),

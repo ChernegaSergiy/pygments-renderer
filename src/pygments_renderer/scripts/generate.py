@@ -3,7 +3,7 @@ from pathlib import Path
 
 from pygments.lexers import get_lexer_by_name, get_lexer_for_filename
 
-from src import tokenize_code, load_theme, render_code, render_terminal
+from pygments_renderer import tokenize_code, load_theme, render_code, render_terminal
 
 
 def main():

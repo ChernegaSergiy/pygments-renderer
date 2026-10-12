@@ -1,7 +1,7 @@
-from src.colors import *
-from src.fonts import *
-from src.highlighter import tokenize_code, load_theme
-from src.renderer import render_code, render_terminal
+from .colors import *
+from .fonts import *
+from .highlighter import tokenize_code, load_theme
+from .renderer import render_code, render_terminal
 
 __all__ = [
     "BG", "FG", "KW", "TY", "FN", "CM", "ST", "NU", "PP", "ORANGE",

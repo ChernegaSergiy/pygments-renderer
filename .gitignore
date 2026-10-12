@@ -7,4 +7,4 @@ venv/
 *.jpg
 dist/
 build/
-src/*.egg-info/
+*.egg-info/

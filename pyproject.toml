@@ -1,7 +1,7 @@
 [project]
 name = "pygments-renderer"
 version = "1.2.0"
-description = "Generate syntax-highlighted code screenshots"
+description = "A CLI tool that generates syntax-highlighted code screenshots as PNG images."
 readme = "README.md"
 requires-python = ">=3.8"
 license = { text = "LicenseRef-CSSM-Unlimited-2.0" }

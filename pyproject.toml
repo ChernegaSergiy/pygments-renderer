@@ -28,7 +28,8 @@ dependencies = [
 [project.scripts]
 pygments-renderer = "src.scripts.generate:main"
 
-[tool.setuptools]
+[tool.setuptools.packages.find]
+where = ["."]
 
 [build-system]
 requires = ["setuptools==84.0.0"]
